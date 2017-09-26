@@ -1,0 +1,14 @@
+(module uwmiter_0.34_0.17_45 (layer F.Cu) (tedit 0)
+  (fp_text reference uwmiter_0.34_0.17_45 (at 0 1.34) (layer F.SilkS) hide
+    (effects (font (size 0.7 0.8) (thickness 0.15)))
+  )
+  (fp_text value Val*** (at 0 2.34) (layer F.SilkS) hide
+    (effects (font (size 0.7 0.8) (thickness 0.15)))
+  )
+  (fp_poly (pts (xy 0 0) (xy 0.34 0) (xy 0.34 0.17) (xy 0.460208 0.290208)
+    (xy 0.219791 0.530624) (xy 0.129199 0.440032) (xy 0 0.128116) (xy 0 0)) (layer F.Cu) (width 0))
+  (pad 1 smd rect (at 0.17 -0.017) (size 0.34 0.034) (layers F.Cu)
+    (clearance 0.000001))
+  (pad 2 smd rect (at 0.35202 0.422437 315) (size 0.034 0.34) (layers F.Cu)
+    (clearance 0.000001))
+)
