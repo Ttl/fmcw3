@@ -1,3 +1,9 @@
 (fp_lib_table
   (lib (name fmcw3)(type KiCad)(uri "$(KIPRJMOD)/fmcw3.pretty")(options "")(descr ""))
+  (lib (name Capacitor_SMD)(type KiCad)(uri "$(KISYSMOD)/Capacitor_SMD.pretty")(options "")(descr ""))
+  (lib (name LED_SMD)(type KiCad)(uri "$(KISYSMOD)/LED_SMD.pretty")(options "")(descr ""))
+  (lib (name Connector_PinHeader_2.54mm)(type KiCad)(uri "$(KISYSMOD)/Connector_PinHeader_2.54mm.pretty")(options "")(descr ""))
+  (lib (name Package_QFP)(type KiCad)(uri "$(KISYSMOD)/Package_QFP.pretty")(options "")(descr ""))
+  (lib (name Package_TO_SOT_SMD)(type KiCad)(uri "$(KISYSMOD)/Package_TO_SOT_SMD.pretty")(options "")(descr ""))
+  (lib (name Package_DFN_QFN)(type KiCad)(uri "$(KISYSMOD)/Package_DFN_QFN.pretty")(options "")(descr ""))
 )

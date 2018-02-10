@@ -1,0 +1,11 @@
+(sym_lib_table
+  (lib (name power)(type Legacy)(uri ${KICAD_SYMBOL_DIR}/power.lib)(options "")(descr ""))
+  (lib (name Device)(type Legacy)(uri ${KICAD_SYMBOL_DIR}/Device.lib)(options "")(descr ""))
+  (lib (name Connector_Specialized)(type Legacy)(uri ${KICAD_SYMBOL_DIR}/Connector_Specialized.lib)(options "")(descr ""))
+  (lib (name Connector_Generic)(type Legacy)(uri ${KICAD_SYMBOL_DIR}/Connector_Generic.lib)(options "")(descr ""))
+  (lib (name Logic_74xgxx)(type Legacy)(uri ${KICAD_SYMBOL_DIR}/Logic_74xgxx.lib)(options "")(descr ""))
+  (lib (name Logic_CMOS_4000)(type Legacy)(uri ${KICAD_SYMBOL_DIR}/Logic_CMOS_4000.lib)(options "")(descr ""))
+  (lib (name Valve)(type Legacy)(uri ${KICAD_SYMBOL_DIR}/Valve.lib)(options "")(descr ""))
+  (lib (name fmcw3)(type Legacy)(uri ${KIPRJMOD}/libs/fmcw3.lib)(options "")(descr ""))
+  (lib (name Switch)(type Legacy)(uri ${KICAD_SYMBOL_DIR}/Switch.lib)(options "")(descr ""))
+)
