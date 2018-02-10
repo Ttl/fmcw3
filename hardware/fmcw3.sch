@@ -1,35 +1,13 @@
-EESchema Schematic File Version 2
+EESchema Schematic File Version 4
 LIBS:power
-LIBS:device
-LIBS:transistors
-LIBS:conn
-LIBS:linear
-LIBS:regul
-LIBS:74xx
-LIBS:cmos4000
-LIBS:adc-dac
-LIBS:memory
-LIBS:xilinx
-LIBS:microcontrollers
-LIBS:dsp
-LIBS:microchip
-LIBS:analog_switches
-LIBS:motorola
-LIBS:texas
-LIBS:intel
-LIBS:audio
-LIBS:interface
-LIBS:digital-audio
-LIBS:philips
-LIBS:display
-LIBS:cypress
-LIBS:siliconi
-LIBS:opto
-LIBS:atmel
-LIBS:contrib
-LIBS:valves
+LIBS:Device
+LIBS:Connector_Specialized
+LIBS:Connector_Generic
+LIBS:Logic_74xgxx
+LIBS:Logic_CMOS_4000
+LIBS:Valve
 LIBS:fmcw3
-LIBS:fmcw3-cache
+LIBS:Switch
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
@@ -261,7 +239,7 @@ ADF_DATA
 Text Label 8700 2800 2    60   ~ 0
 ADF_TXDATA
 $Comp
-L KT2520K U4
+L fmcw3:KT2520K U4
 U 1 1 59730F9D
 P 2300 6800
 F 0 "U4" H 2500 6550 60  0000 C CNN
@@ -272,7 +250,7 @@ F 3 "" H 2300 6800 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR01
+L power:GND #PWR01
 U 1 1 597314F3
 P 1700 7050
 F 0 "#PWR01" H 1700 6800 50  0001 C CNN
@@ -283,7 +261,7 @@ F 3 "" H 1700 7050 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C C12
+L Device:C C12
 U 1 1 597324ED
 P 1550 6700
 F 0 "C12" H 1575 6800 50  0000 L CNN
@@ -294,7 +272,7 @@ F 3 "" H 1550 6700 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR02
+L power:GND #PWR02
 U 1 1 597328E7
 P 1550 6850
 F 0 "#PWR02" H 1550 6600 50  0001 C CNN
@@ -309,7 +287,7 @@ Text Label 1700 6550 0    60   ~ 0
 Text Label 2550 5850 0    60   ~ 0
 1V8_OSC
 $Comp
-L GND #PWR03
+L power:GND #PWR03
 U 1 1 59733465
 P 2050 6250
 F 0 "#PWR03" H 2050 6000 50  0001 C CNN
@@ -320,7 +298,7 @@ F 3 "" H 2050 6250 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C C9
+L Device:C C9
 U 1 1 59733A83
 P 1150 6000
 F 0 "C9" H 1175 6100 50  0000 L CNN
@@ -331,7 +309,7 @@ F 3 "" H 1150 6000 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR04
+L power:GND #PWR04
 U 1 1 59733E8A
 P 1150 6150
 F 0 "#PWR04" H 1150 5900 50  0001 C CNN
@@ -342,7 +320,7 @@ F 3 "" H 1150 6150 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C C1
+L Device:C C1
 U 1 1 597342ED
 P 900 6000
 F 0 "C1" H 925 6100 50  0000 L CNN
@@ -357,7 +335,7 @@ Text Label 950  5850 0    60   ~ 0
 Text Label 8700 2150 2    60   ~ 0
 3V0
 $Comp
-L C C13
+L Device:C C13
 U 1 1 59738044
 P 3000 6850
 F 0 "C13" H 3025 6950 50  0000 L CNN
@@ -368,29 +346,18 @@ F 3 "" H 3000 6850 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L 74AHC1G04 U5
+L Logic_74xgxx:74AHC1G04 U5
 U 1 1 5973922D
 P 3750 6850
 F 0 "U5" H 3945 6965 60  0000 C CNN
 F 1 "NC7S04P5X" H 4050 6700 60  0000 C CNN
-F 2 "TO_SOT_Packages_SMD:SOT-353_SC-70-5" H 3750 6850 60  0001 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 3750 6850 60  0001 C CNN
 F 3 "" H 3750 6850 60  0000 C CNN
 	1    3750 6850
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR05
-U 1 1 59739636
-P 3700 7150
-F 0 "#PWR05" H 3700 6900 50  0001 C CNN
-F 1 "GND" H 3700 7000 50  0000 C CNN
-F 2 "" H 3700 7150 60  0000 C CNN
-F 3 "" H 3700 7150 60  0000 C CNN
-	1    3700 7150
-	1    0    0    -1  
-$EndComp
-$Comp
-L C C15
+L Device:C C15
 U 1 1 59739B00
 P 3450 6300
 F 0 "C15" H 3475 6400 50  0000 L CNN
@@ -401,7 +368,7 @@ F 3 "" H 3450 6300 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR06
+L power:GND #PWR06
 U 1 1 59739E1B
 P 3450 6500
 F 0 "#PWR06" H 3450 6250 50  0001 C CNN
@@ -412,7 +379,7 @@ F 3 "" H 3450 6500 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R3
+L Device:R R3
 U 1 1 5973A340
 P 3400 5650
 F 0 "R3" V 3480 5650 50  0000 C CNN
@@ -423,7 +390,7 @@ F 3 "" H 3400 5650 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L C C16
+L Device:C C16
 U 1 1 5973B932
 P 3750 5800
 F 0 "C16" H 3775 5900 50  0000 L CNN
@@ -434,7 +401,7 @@ F 3 "" H 3750 5800 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R8
+L Device:R R8
 U 1 1 5973BB09
 P 4050 5650
 F 0 "R8" V 4130 5650 50  0000 C CNN
@@ -445,7 +412,7 @@ F 3 "" H 4050 5650 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L GND #PWR07
+L power:GND #PWR07
 U 1 1 5973C151
 P 3750 5950
 F 0 "#PWR07" H 3750 5700 50  0001 C CNN
@@ -456,7 +423,7 @@ F 3 "" H 3750 5950 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L NB3N551 U6
+L fmcw3:NB3N551 U6
 U 1 1 5973DEB0
 P 5150 6800
 F 0 "U6" H 5350 6450 60  0000 C CNN
@@ -467,20 +434,20 @@ F 3 "" H 5150 6800 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L FILTER FB1
+L Device:L_Core_Ferrite FB1
 U 1 1 5973E6F9
 P 4350 5300
-F 0 "FB1" H 4350 5450 50  0000 C CNN
-F 1 "BLM18PG181SN1D" H 4350 5200 50  0000 C CNN
+F 0 "FB1" V 4450 5300 50  0000 C CNN
+F 1 "BLM18PG181SN1D" V 4300 5300 50  0000 C CNN
 F 2 "fmcw3:C_0603b" H 4350 5300 60  0001 C CNN
 F 3 "" H 4350 5300 60  0000 C CNN
 	1    4350 5300
-	1    0    0    -1  
+	0    -1   -1   0   
 $EndComp
 Text Label 3850 5300 2    60   ~ 0
 3V3D
 $Comp
-L C C17
+L Device:C C17
 U 1 1 5973FA5C
 P 4800 5550
 F 0 "C17" H 4825 5650 50  0000 L CNN
@@ -491,7 +458,7 @@ F 3 "" H 4800 5550 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR08
+L power:GND #PWR08
 U 1 1 5973FE88
 P 4800 5700
 F 0 "#PWR08" H 4800 5450 50  0001 C CNN
@@ -502,7 +469,7 @@ F 3 "" H 4800 5700 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR09
+L power:GND #PWR09
 U 1 1 597410B7
 P 5100 7400
 F 0 "#PWR09" H 5100 7150 50  0001 C CNN
@@ -631,7 +598,7 @@ Wire Wire Line
 Wire Wire Line
 	1900 6950 1700 6950
 Wire Wire Line
-	1700 6850 1700 7050
+	1700 6850 1700 6950
 Wire Wire Line
 	1900 6850 1700 6850
 Connection ~ 1700 6950
@@ -644,7 +611,7 @@ Wire Wire Line
 Wire Wire Line
 	1400 5950 1400 5850
 Wire Wire Line
-	900  5850 1550 5850
+	900  5850 1150 5850
 Connection ~ 1400 5850
 Connection ~ 1150 5850
 Wire Wire Line
@@ -654,54 +621,37 @@ Wire Wire Line
 Wire Wire Line
 	2850 6850 2750 6850
 Wire Wire Line
-	3150 6850 3300 6850
-Wire Wire Line
-	3700 7050 3700 7150
+	3150 6850 3250 6850
 Wire Wire Line
 	3450 6450 3450 6500
 Wire Wire Line
-	3700 6650 3700 6150
-Wire Wire Line
-	3450 6150 5150 6150
-Wire Wire Line
-	4200 6850 4200 5650
+	4200 6850 4200 6750
 Wire Wire Line
 	3250 5650 3250 6850
 Connection ~ 3250 6850
 Wire Wire Line
-	3550 5650 3900 5650
+	3550 5650 3750 5650
 Connection ~ 3750 5650
-Wire Wire Line
-	4000 5300 3850 5300
-Wire Wire Line
-	4700 5300 5150 5300
 Wire Wire Line
 	4800 5300 4800 5400
 Wire Wire Line
-	5150 5300 5150 6250
+	5150 5300 5150 6150
 Connection ~ 4800 5300
 Connection ~ 5150 6150
-Connection ~ 3700 6150
 Wire Wire Line
 	4500 6850 4650 6850
 Wire Wire Line
 	4500 6150 4500 6850
 Connection ~ 4500 6150
 Wire Wire Line
-	4200 6850 4350 6850
-Wire Wire Line
-	4350 6850 4350 6750
-Wire Wire Line
-	4350 6750 4650 6750
-Wire Wire Line
-	5100 7300 5100 7400
+	5100 7300 5100 7350
 Wire Wire Line
 	5200 7300 5200 7350
 Wire Wire Line
 	5200 7350 5100 7350
 Connection ~ 5100 7350
 $Comp
-L R R13
+L Device:R R13
 U 1 1 59741D92
 P 5950 6650
 F 0 "R13" V 6030 6650 50  0000 C CNN
@@ -712,7 +662,7 @@ F 3 "" H 5950 6650 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R15
+L Device:R R15
 U 1 1 59742059
 P 5950 6750
 F 0 "R15" V 6030 6750 50  0000 C CNN
@@ -723,7 +673,7 @@ F 3 "" H 5950 6750 30  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R16
+L Device:R R16
 U 1 1 5974223B
 P 5950 6850
 F 0 "R16" V 6030 6850 50  0000 C CNN
@@ -763,40 +713,40 @@ ADC_REF
 Text Label 1500 3250 2    60   ~ 0
 FPGA_REF
 $Comp
-L CONN_01X01 P5
+L Connector_Generic:Conn_01x01 P5
 U 1 1 596FB8AC
 P 7700 5750
 F 0 "P5" H 7700 5850 50  0000 C CNN
-F 1 "CONN_01X01" V 7800 5750 50  0000 C CNN
+F 1 "Conn_01x01" V 7800 5750 50  0001 C CNN
 F 2 "fmcw3:MountingHole_3.2mm_M3_Pad_Via_mod" H 7700 5750 60  0001 C CNN
 F 3 "" H 7700 5750 60  0000 C CNN
 	1    7700 5750
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_01X01 P7
+L Connector_Generic:Conn_01x01 P7
 U 1 1 596FBCA7
 P 7700 6000
 F 0 "P7" H 7700 6100 50  0000 C CNN
-F 1 "CONN_01X01" V 7800 6000 50  0000 C CNN
+F 1 "Conn_01x01" V 7800 6000 50  0001 C CNN
 F 2 "fmcw3:MountingHole_3.2mm_M3_Pad_Via_mod" H 7700 6000 60  0001 C CNN
 F 3 "" H 7700 6000 60  0000 C CNN
 	1    7700 6000
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_01X01 P8
+L Connector_Generic:Conn_01x01 P8
 U 1 1 596FBE83
 P 7700 6250
 F 0 "P8" H 7700 6350 50  0000 C CNN
-F 1 "CONN_01X01" V 7800 6250 50  0000 C CNN
+F 1 "Conn_01x01" V 7800 6250 50  0001 C CNN
 F 2 "fmcw3:MountingHole_3.2mm_M3_Pad_Via_mod" H 7700 6250 60  0001 C CNN
 F 3 "" H 7700 6250 60  0000 C CNN
 	1    7700 6250
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR010
+L power:GND #PWR010
 U 1 1 596FD536
 P 7350 6300
 F 0 "#PWR010" H 7350 6050 50  0001 C CNN
@@ -811,7 +761,7 @@ Wire Wire Line
 Wire Wire Line
 	7350 6250 7500 6250
 $Comp
-L GND #PWR011
+L power:GND #PWR011
 U 1 1 596FD869
 P 7350 6050
 F 0 "#PWR011" H 7350 5800 50  0001 C CNN
@@ -822,7 +772,7 @@ F 3 "" H 7350 6050 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR012
+L power:GND #PWR012
 U 1 1 596FDC0F
 P 7350 5800
 F 0 "#PWR012" H 7350 5550 50  0001 C CNN
@@ -845,7 +795,7 @@ Wire Wire Line
 Text Label 10200 2250 0    60   ~ 0
 PA_OFF
 $Comp
-L LP5907 U2
+L fmcw3:LP5907 U2
 U 1 1 5972A148
 P 2050 5900
 F 0 "U2" H 2250 5700 60  0000 C CNN
@@ -873,4 +823,47 @@ Text Label 10200 2400 0    60   ~ 0
 1V8
 Text Notes 8900 3400 0    60   ~ 0
 3V0: 70 mA
+Wire Wire Line
+	1700 6950 1700 7050
+Wire Wire Line
+	1400 5850 1550 5850
+Wire Wire Line
+	1150 5850 1400 5850
+Wire Wire Line
+	3750 5650 3900 5650
+Wire Wire Line
+	4800 5300 5150 5300
+Wire Wire Line
+	5150 6150 5150 6250
+Wire Wire Line
+	5100 7350 5100 7400
+Wire Wire Line
+	3250 6850 3450 6850
+Wire Wire Line
+	4000 6850 4200 6850
+Wire Wire Line
+	4500 6150 5150 6150
+Wire Wire Line
+	4200 6750 4650 6750
+Connection ~ 4200 6750
+Wire Wire Line
+	4200 6750 4200 5650
+$Comp
+L power:VCC #PWR05
+U 1 1 5A5DB165
+P 3450 6150
+F 0 "#PWR05" H 3450 6000 50  0001 C CNN
+F 1 "VCC" H 3467 6323 50  0000 C CNN
+F 2 "" H 3450 6150 50  0001 C CNN
+F 3 "" H 3450 6150 50  0001 C CNN
+	1    3450 6150
+	1    0    0    -1  
+$EndComp
+Connection ~ 3450 6150
+Wire Wire Line
+	3450 6150 4500 6150
+Wire Wire Line
+	4500 5300 4800 5300
+Wire Wire Line
+	3850 5300 4200 5300
 $EndSCHEMATC
