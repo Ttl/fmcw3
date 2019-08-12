@@ -1,0 +1,8 @@
+Build system adapted from https://github.com/PatWie/tensorflow-cmake
+
+Building instructions:
+
+$ mkdir build
+$ cd build
+$ cmake ..
+$ make

@@ -162,7 +162,7 @@ struct StoltFunctor<GPUDevice, Dtype> {
           const float* x_interp_tensor,
           int y_rows, int y_cols, int x_interp_len, int order) {
 
-      const int wgs = (x_interp_len + wg_size - 1) / wg_size; // ceil(y_cols / wg_size)
+      const int wgs = (x_interp_len + wg_size - 1) / wg_size;
       int thread_per_block = 256;
       int block_count = wgs * y_rows / thread_per_block;
 
@@ -186,7 +186,7 @@ struct StoltGradFunctor<GPUDevice, Dtype> {
           const std::complex<float>* grad_tensor,
           int y_rows, int y_cols, int x_interp_len, int order) {
 
-      const int wgs = (x_interp_len + wg_size - 1) / wg_size; // ceil(y_cols / wg_size)
+      const int wgs = (x_interp_len + wg_size - 1) / wg_size;
       int thread_per_block = 256;
       int block_count = wgs * y_rows / thread_per_block;
 

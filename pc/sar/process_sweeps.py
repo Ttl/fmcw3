@@ -2,7 +2,6 @@
 import sys
 import numpy as np
 import ast
-from scipy.signal import butter, filtfilt
 import pickle
 
 def twos_comp(val, bits):
@@ -38,11 +37,13 @@ def read_settings(f):
 start = b'\x7f'
 fs = 2e6
 c = 299792458.0
+fir_gain = 9.0
 adc_ref = 1
 adc_bits = 12
 
 sweeps_to_read = None
 decimate_sweeps = 2
+fix_saturation = False
 
 l = []
 ch1 = []
@@ -174,6 +175,22 @@ if len(ch1) > 0:
 
 if len(ch2) > 0:
     ch2 = ch2[nstart:nend]
+
+m = 0.0
+if fix_saturation:
+    for ch in [ch1, ch2]:
+        if len(ch) == 0:
+            continue
+        for e, s in enumerate(ch):
+            fs = np.fft.rfft(s)
+            y = np.abs(fs)
+            y /= len(y)*(fir_gain*2**(adc_bits-1))
+            if np.max(y) > 1.02:
+                n = np.argmax(y)
+                fs[int(1.5*n):] *= 0.2
+                x = np.fft.irfft(fs)
+                print('Saturation', e)
+                ch[e] = x
 
 with open('sweeps.p', 'wb') as f:
     pickle.dump((settings, ch1, ch2), f)
