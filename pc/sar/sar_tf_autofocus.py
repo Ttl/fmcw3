@@ -29,7 +29,7 @@ cross_range_padding = 2.0
 dynamic_range = 80
 # Interpolation grid spacing multiplier. 1 = No aliasing, >1 less points, aliases.
 # 2 aliases fully to unused positive frequencies.
-ky_delta_spacing = 1.6
+ky_delta_spacing = 1.75
 interp_order = 3
 transposed_image = False
 
@@ -64,9 +64,8 @@ d = f_to_d(f, bw, tsweep)
 
 range0 = 0
 range1 = c*(fs/2.0)*tsweep/(2*bw)
-delta_range = range1/sweep_samples
-crange0 = -len(data)*delta_x/2.0
-crange1 = len(data)*delta_x/2.0
+crange0 = -(len(data) - 1)*delta_x/2.0
+crange1 = (len(data) - 1)*delta_x/2.0
 raw_extent = (range0, range1, crange0, crange1)
 
 # Window data and hilbert transform
@@ -89,8 +88,11 @@ kx = np.linspace(-np.pi/delta_x, np.pi/delta_x, len(data))
 dkr = np.linspace((4*np.pi/c)*(-bw/2), (4*np.pi/c)*(bw/2), sweep_samples)
 kr = dkr + (4*np.pi/c)*fc
 ky0 = (kr[0]**2 - kx[0]**2)**0.5
+assert 1.0 <= ky_delta_spacing <= 2.0
 ky_delta = ky_delta_spacing * (kr[1] - kr[0])
 ky_interp = np.arange(ky0, kr[-1], ky_delta)
+# Bin in the final image corresponding to the maximum range distance
+ky_max_range_bin = int(np.ceil(0.5 * (kr[-1] - ky0) / (kr[1] - kr[0])))
 
 print("Input size: {}".format(data.shape))
 print("Output size: {}".format((data.shape[0], len(ky_interp))))
@@ -133,8 +135,7 @@ img = stolt_interp(ky, img, ky_interp, interp_order)
 #img = tf.signal.ifft2d(img * w)
 img = tf.signal.ifft2d(img)
 
-image_bins = int(img.shape[1].value / ky_delta_spacing)
-img = img[:,:image_bins]
+img = img[:,:ky_max_range_bin]
 abs_img = tf.abs(img)
 abs_img = abs_img / tf.reduce_sum(abs_img)
 entropy = -tf.reduce_sum(abs_img * tf.log(abs_img))
@@ -177,12 +178,11 @@ with open('phase_correction.p', 'wb') as f:
 
 plt.figure()
 st = 20 * np.log10(np.abs(st))
-aspect = (2 * cross_range_padding * crange1) / range1
 if transposed_image:
-    imgplot = plt.imshow(st.T, interpolation='none', origin='lower', aspect=1/aspect,
-                     extent=[cross_range_padding * crange0, cross_range_padding * crange1, 0, range1, ])
+    imgplot = plt.imshow(st.T, interpolation='none', origin='lower',
+                     extent=[cross_range_padding * crange0, cross_range_padding * crange1, 0, range1])
 else:
-    imgplot = plt.imshow(st, interpolation='none', origin='lower', aspect=aspect,
+    imgplot = plt.imshow(st, interpolation='none', origin='lower',
                      extent=[0, range1, cross_range_padding * crange0, cross_range_padding * crange1])
 plt.xlabel('Range [m]')
 plt.ylabel('Cross-range [m]')
