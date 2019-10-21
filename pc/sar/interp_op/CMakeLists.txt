@@ -27,3 +27,4 @@ include_directories(SYSTEM "/usr/local/")
 
 
 add_tensorflow_gpu_operation("stolt_interp")
+add_tensorflow_gpu_operation("backprojection")
