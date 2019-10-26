@@ -52,7 +52,7 @@ c = 299792458.0
 adc_ref = 1
 adc_bits = 12
 
-max_range = 50
+max_range = 500
 d_antenna = 28e-3 #Antenna distance
 #channel_dl = 0e-3 #Channel length difference
 angle_limit = 55
@@ -60,7 +60,7 @@ channel_offset = 21
 swap_chs = True
 sweeps_to_read = None
 angle_pad = 100
-decimate_sweeps = 1
+decimate_sweeps = 8
 kaiser_beta = 6
 
 l = []
@@ -158,12 +158,13 @@ with open(sys.argv[1], 'r') as f:
                 else:
                     ch1.append(l)
                 l = []
-                sweep_count = 0
+                sweep_count = 1
             else:
                 l = []
                 sweep_count += 1
 
 print 'Done reading'
+print 'Ch1 {}, Ch2 {}'.format(len(ch1), len(ch2))
 
 ch1 = np.array(ch1)
 ch2 = np.array(ch2)
@@ -177,7 +178,7 @@ d = f_to_d(f, bw, tsweep)
 angles = 180/np.pi*np.arcsin(np.linspace(1, -1, angle_pad)*wl/(2*d_antenna))
 angle_mask = ~(np.isnan(angles) + (np.abs(angles) > angle_limit))
 angles_masked = angles[angle_mask]
-plot_i = -12
+plot_i = 10
 
 if 0:
     #Add 0 dBFs signal for testing purposes
@@ -186,7 +187,7 @@ if 0:
 w = np.kaiser(len(ch1[0]), kaiser_beta)
 w *= len(w)/np.sum(w)
 
-if 1:
+if 0:
     subtract_background = False
     subtract_clutter = False
 
@@ -303,6 +304,15 @@ if 0:
     plt.xlabel("Time [s]")
 
 if 0:
+    plt.figure()
+    y = np.abs(np.fft.rfft(ch1[plot_i]))
+    y /= len(y)*(fir_gain*2**(adc_bits-1))
+    plt.plot(y)
+    plt.title('IF spectrum')
+    plt.ylabel("Amplitude [V]")
+    plt.xlabel("Time [s]")
+
+if 0:
     x1 = np.array(ch1[plot_i], dtype=np.float)
     x2 = np.array(ch2[plot_i], dtype=np.float)
 
@@ -326,9 +336,9 @@ if 0:
 
 
 if 1:
-    sweeps = ch2
+    sweeps = ch1
 
-    subtract_clutter = True
+    subtract_clutter = False
     subtract_background = False
 
     sw_len = len(ch1[0])
@@ -367,15 +377,15 @@ if 1:
     if 1:
         f = fs/2.0
 
-        t = np.linspace(0, decimate_sweeps*lines*(tsweep+tdelay), im.shape[1])
+        t = np.linspace(0, decimate_sweeps*(lines-1)*(tsweep+tdelay), lines)
         xx, yy = np.meshgrid(
-            #np.linspace(0,im.shape[1]-1, im.shape[1]),
+            #np.arange(lines),
             t,
             np.linspace(0, c*max_range_index*fs/(2*sw_len)/((bw/tsweep)), im.shape[0]))
         plt.figure()
         plt.ylabel("Range [m]")
         plt.xlabel("Time [s]")
-        plt.xlim([t[0], t[-1]])
+        #plt.xlim([t[0], t[-1]])
         plt.title(' Range-time plot')
         imgplot = plt.pcolormesh(xx,yy,im)
         imgplot.set_clim(m-80,m)

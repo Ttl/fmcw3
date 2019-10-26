@@ -42,7 +42,7 @@ adc_ref = 1
 adc_bits = 12
 
 sweeps_to_read = None
-decimate_sweeps = 2
+decimate_sweeps = 1
 fix_saturation = False
 
 l = []
@@ -74,9 +74,11 @@ def find_start(f):
 
 tstart = float(sys.argv[2])
 tend = float(sys.argv[3])
+if len(sys.argv) > 4:
+    decimate_sweeps = int(sys.argv[4])
 
 if tstart > tend:
-    raise ValueError()
+    raise ValueError("End time before start time.")
 
 with open(sys.argv[1], 'rb') as f:
     settings = read_settings(f)
