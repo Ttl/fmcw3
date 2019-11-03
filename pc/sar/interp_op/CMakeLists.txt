@@ -14,7 +14,7 @@ find_package(CUDA 9 REQUIRED)
 # set necessary flags
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${SSE_FLAGS} -march=native -fopenmp -D_GLIBCXX_USE_CXX11_ABI=${TensorFlow_ABI}")
 set(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} -fPIC --shared -D_GLIBCXX_USE_CXX11_ABI=${TensorFlow_ABI}" )
-set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} --compiler-options -fPIC -std=c++11 --expt-relaxed-constexpr -D GOOGLE_CUDA=1 --gpu-architecture=sm_61 -D_GLIBCXX_USE_CXX11_ABI=${TensorFlow_ABI}" )
+set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} --compiler-options -fPIC -std=c++11 --expt-relaxed-constexpr -D GOOGLE_CUDA=1 -D_GLIBCXX_USE_CXX11_ABI=${TensorFlow_ABI}" )
 
 get_filename_component(TF_CUDA ${CUDA_INCLUDE_DIRS} DIRECTORY)
 get_filename_component(TF_CUDA ${TF_CUDA} DIRECTORY)
