@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 import tensorflow as tf
-from interp_op import backprojection
+from sar_op import backprojection
 import matplotlib.pyplot as plt
 import numpy as np
 import pickle
@@ -154,7 +154,6 @@ v_smoothness = tf.reduce_mean(tf.square(v[1:] - v[:-1]), axis=0)
 loss = entropy + 5 * v_smoothness[0] + 2 * v_smoothness[1] + 1 * constant_v[0] + 1 * constant_v[1]
 
 lr_ph = tf.placeholder(tf.float32)
-#opt_op = tf.train.AdamOptimizer(learning_rate=lr_ph).minimize(loss)
 opt_op = tf.train.MomentumOptimizer(learning_rate=lr_ph, momentum=0.9).minimize(loss)
 
 init_op = tf.global_variables_initializer()

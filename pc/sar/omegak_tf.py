@@ -5,7 +5,7 @@ import numpy as np
 import pickle
 import tensorflow as tf
 from tensorflow.python.client import timeline
-from interp_op import stolt_interp
+from sar_op import stolt_interp
 from taylor import taylor
 
 def f_to_d(f, bw, sweep_length):
@@ -24,7 +24,7 @@ channel = 1
 rs = 0
 v = 1.55
 #FFT zero-padding amount, increases cross-range with reduced resolution
-cross_range_padding = 2.0
+cross_range_padding = 1.5
 #Dynamic range of final image in dB
 dynamic_range = 80
 # Interpolation grid spacing multiplier. 1 = No aliasing, >1 less points, aliases.
